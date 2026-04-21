@@ -1,41 +1,52 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Mail, MapPin, Clock, Phone, CheckCircle, AlertCircle } from "lucide-react"
-import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
-import { Spinner } from "@/components/ui/spinner"
-import { motion } from "framer-motion"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Mail,
+  MapPin,
+  Clock,
+  Phone,
+  CheckCircle,
+  AlertCircle,
+} from "lucide-react";
+import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
+import { Spinner } from "@/components/ui/spinner";
+import { motion } from "framer-motion";
 
 const contactInfo = [
   {
-    icon: Phone,
-    title: "Telephone",
-    // TODO: Remplacez par votre numero de telephone
-    value: "06 12 34 56 78",
-  },
-  {
     icon: Mail,
     title: "Email",
-    // TODO: Remplacez par votre adresse email
-    value: "contact@devstudio.fr",
+    value: "contact@ydweb.fr",
   },
   {
     icon: MapPin,
     title: "Zone d'intervention",
-    // TODO: Remplacez par votre zone geographique
-    value: "Toute la France",
+    value: "France, Suisse",
   },
   {
     icon: Clock,
-    title: "Delai de reponse",
+    title: "Délai de réponse",
     value: "Sous 24 heures",
   },
-]
+];
 
 const services = [
   "Site vitrine",
@@ -43,51 +54,55 @@ const services = [
   "Site e-commerce",
   "Refonte de site existant",
   "Autre projet",
-]
+];
 
 export function Contact() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
-  const [errorMessage, setErrorMessage] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setSubmitStatus("idle")
-    setErrorMessage("")
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+    setErrorMessage("");
 
-    const formData = new FormData(e.currentTarget)
+    const formData = new FormData(e.currentTarget);
     const data = {
       name: formData.get("name") as string,
       email: formData.get("email") as string,
       phone: formData.get("phone") as string,
       service: formData.get("service") as string,
       message: formData.get("message") as string,
-    }
+    };
 
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
-      })
+      });
 
-      const result = await response.json()
+      const result = await response.json();
 
       if (response.ok) {
-        setSubmitStatus("success")
-        e.currentTarget.reset()
+        setSubmitStatus("success");
+        e.currentTarget.reset();
       } else {
-        setSubmitStatus("error")
-        setErrorMessage(result.error || "Une erreur est survenue")
+        setSubmitStatus("error");
+        setErrorMessage(result.error || "Une erreur est survenue");
       }
     } catch {
-      setSubmitStatus("error")
-      setErrorMessage("Impossible d'envoyer le message. Verifiez votre connexion.")
+      setSubmitStatus("error");
+      setErrorMessage(
+        "Impossible d'envoyer le message. Verifiez votre connexion.",
+      );
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <section id="contact" className="py-20 sm:py-32">
@@ -99,10 +114,12 @@ export function Contact() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground">Parlons de votre projet</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
+            Parlons de votre projet
+          </h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-            Devis gratuit et sans engagement. Decrivez-moi votre activite et vos besoins, 
-            je vous recontacte rapidement avec une proposition adaptee.
+            Devis gratuit et sans engagement. Décrivez-moi votre activité et vos
+            besoins, je vous recontacte rapidement avec une proposition adaptée.
           </p>
         </motion.div>
 
@@ -129,8 +146,12 @@ export function Contact() {
                       <info.icon className="h-5 w-5 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-foreground">{info.title}</h3>
-                      <p className="text-muted-foreground text-sm mt-1">{info.value}</p>
+                      <h3 className="font-semibold text-foreground">
+                        {info.title}
+                      </h3>
+                      <p className="text-muted-foreground text-sm mt-1">
+                        {info.value}
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
@@ -148,9 +169,12 @@ export function Contact() {
           >
             <Card className="border-border/50">
               <CardHeader>
-                <CardTitle className="text-foreground">Demande de devis gratuit</CardTitle>
+                <CardTitle className="text-foreground">
+                  Demande de devis gratuit
+                </CardTitle>
                 <CardDescription>
-                  Remplissez ce formulaire et je vous recontacte sous 24h pour discuter de votre projet.
+                  Remplissez ce formulaire et je vous recontacte sous 24h pour
+                  discuter de votre projet.
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -161,9 +185,12 @@ export function Contact() {
                     className="text-center py-8"
                   >
                     <CheckCircle className="h-16 w-16 text-primary mx-auto mb-4" />
-                    <h3 className="text-xl font-semibold text-foreground">Message envoye !</h3>
+                    <h3 className="text-xl font-semibold text-foreground">
+                      Message envoyé !
+                    </h3>
                     <p className="text-muted-foreground mt-2">
-                      Merci pour votre demande. Je vous recontacte tres rapidement.
+                      Merci pour votre demande. Je vous recontacte très
+                      rapidement.
                     </p>
                   </motion.div>
                 ) : (
@@ -172,13 +199,22 @@ export function Contact() {
                       <FieldGroup>
                         <Field>
                           <FieldLabel>Votre nom *</FieldLabel>
-                          <Input name="name" placeholder="Jean Dupont" required />
+                          <Input
+                            name="name"
+                            placeholder="Jean Dupont"
+                            required
+                          />
                         </Field>
                       </FieldGroup>
                       <FieldGroup>
                         <Field>
                           <FieldLabel>Votre email *</FieldLabel>
-                          <Input name="email" type="email" placeholder="jean@exemple.com" required />
+                          <Input
+                            name="email"
+                            type="email"
+                            placeholder="jean@exemple.com"
+                            required
+                          />
                         </Field>
                       </FieldGroup>
                     </div>
@@ -186,7 +222,11 @@ export function Contact() {
                       <FieldGroup>
                         <Field>
                           <FieldLabel>Telephone</FieldLabel>
-                          <Input name="phone" type="tel" placeholder="06 12 34 56 78" />
+                          <Input
+                            name="phone"
+                            type="tel"
+                            placeholder="06 12 34 56 78"
+                          />
                         </Field>
                       </FieldGroup>
                       <FieldGroup>
@@ -212,7 +252,7 @@ export function Contact() {
                         <FieldLabel>Decrivez votre projet *</FieldLabel>
                         <Textarea
                           name="message"
-                          placeholder="Parlez-moi de votre activite, ce que vous attendez de votre site, vos objectifs..."
+                          placeholder="Parlez-moi de votre activité, ce que vous attendez de votre site, vos objectifs..."
                           className="min-h-[150px] resize-none"
                           required
                         />
@@ -234,7 +274,12 @@ export function Contact() {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      <Button type="submit" size="lg" className="w-full sm:w-auto" disabled={isSubmitting}>
+                      <Button
+                        type="submit"
+                        size="lg"
+                        className="w-full sm:w-auto"
+                        disabled={isSubmitting}
+                      >
                         {isSubmitting ? (
                           <>
                             <Spinner className="mr-2" />
@@ -247,7 +292,8 @@ export function Contact() {
                     </motion.div>
 
                     <p className="text-xs text-muted-foreground">
-                      * Champs obligatoires. Vos informations restent confidentielles.
+                      * Champs obligatoires. Vos informations restent
+                      confidentielles.
                     </p>
                   </form>
                 )}
@@ -257,5 +303,5 @@ export function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }

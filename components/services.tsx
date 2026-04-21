@@ -52,7 +52,7 @@ const services = [
     icon: Headphones,
     title: "Accompagnement inclus",
     description:
-      "Je vous explique tout simplement, sans termes compliques. Formation a la prise en main et support apres la mise en ligne.",
+      "Je vous explique simplement le fonctionnement de votre site et je reste disponible après la mise en ligne pour toute modification ou assistance.",
   },
 ];
 

@@ -1,17 +1,16 @@
-"use client"
+"use client";
 
-import { Badge } from "@/components/ui/badge"
-import { CheckCircle } from "lucide-react"
-import { motion } from "framer-motion"
+import { Badge } from "@/components/ui/badge";
+import { CheckCircle } from "lucide-react";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 const guarantees = [
-  "Site livre en 2 a 4 semaines",
-  "Paiement en plusieurs fois possible",
-  "Modifications incluses pendant 1 mois",
-  "Formation a la prise en main",
-  "Support technique reactif",
-  "Pas de frais caches",
-]
+  "Livraison rapide sous 1 à 2 semaines selon le projet",
+  "Petites modifications incluses pendant 1 mois après livraison",
+  "Support après livraison en cas de besoin",
+  "Prix clair et fixé à l’avance, sans surprise",
+];
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -21,7 +20,7 @@ const containerVariants = {
       staggerChildren: 0.1,
     },
   },
-}
+};
 
 const itemVariants = {
   hidden: { opacity: 0, x: -20 },
@@ -30,7 +29,7 @@ const itemVariants = {
     x: 0,
     transition: { duration: 0.4 },
   },
-}
+};
 
 export function About() {
   return (
@@ -43,24 +42,35 @@ export function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative"
+            className="relative flex items-center justify-center"
           >
-            <div className="aspect-square rounded-2xl bg-primary/10 flex items-center justify-center">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-                className="w-48 h-48 rounded-full bg-primary/20 flex items-center justify-center"
-              >
-                <span className="text-6xl">{"</>"}</span>
-              </motion.div>
-            </div>
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="absolute -bottom-6 -right-6 w-32 h-32 bg-accent/20 rounded-2xl -z-10"
-            />
+              whileHover={{ scale: 1.03 }}
+              transition={{ duration: 0.3 }}
+              className="relative"
+            >
+              {/* Desktop mockup */}
+              <div className="rounded-xl overflow-hidden border shadow-xl bg-background">
+                <Image
+                  src="/site-desktop.png"
+                  alt="Aperçu du site sur ordinateur"
+                  className="w-[400px] h-auto object-cover"
+                  width={400}
+                  height={300}
+                />
+              </div>
+
+              {/* Mobile mockup */}
+              <div className="absolute -bottom-6 -right-6 overflow-hidden rounded-lg">
+                <Image
+                  src="/site-mobile.png"
+                  alt="Aperçu du site sur mobile"
+                  className="w-[120px] h-[240px] object-cover"
+                  width={120}
+                  height={240}
+                />
+              </div>
+            </motion.div>
           </motion.div>
 
           <motion.div
@@ -69,26 +79,35 @@ export function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground">Pourquoi travailler avec moi ?</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
+              Pourquoi travailler avec moi ?
+            </h2>
             <div className="mt-6 space-y-4 text-muted-foreground">
               <p>
-                Je comprends les besoins des artisans et petites entreprises parce que j&apos;ai grandi 
-                dans une famille d&apos;entrepreneurs. Je sais que vous n&apos;avez pas de temps a perdre 
-                avec des explications techniques compliquees.
+                Je travaille avec des artisans, des indépendants et des petites
+                entreprises qui veulent être visibles sur internet sans perdre
+                de temps ni se compliquer la vie.
               </p>
               <p>
-                Mon approche est simple : je vous pose les bonnes questions, je cree votre site, 
-                et je vous explique comment l&apos;utiliser. Vous restez concentre sur votre metier 
-                pendant que je m&apos;occupe de votre presence en ligne.
+                Mon objectif est de créer des sites clairs, faciles à utiliser
+                et pensés pour générer des demandes de clients (appels, devis,
+                contacts).
               </p>
               <p>
-                Je ne suis pas une grosse agence avec des tarifs exorbitants. Je travaille seul, 
-                ce qui me permet de proposer des prix justes tout en etant disponible et reactif.
+                Je vous accompagne du début à la fin : je vous pose les bonnes
+                questions, je crée votre site, et je vous montre comment
+                l’utiliser simplement au quotidien.
+              </p>
+              <p>
+                Vous pouvez rester concentré sur votre métier, pendant que votre
+                site vous aide à trouver de nouveaux clients.
               </p>
             </div>
 
             <div className="mt-8">
-              <h3 className="text-lg font-semibold text-foreground mb-4">Mes engagements</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-4">
+                Mes engagements
+              </h3>
               <motion.div
                 variants={containerVariants}
                 initial="hidden"
@@ -112,5 +131,5 @@ export function About() {
         </div>
       </div>
     </section>
-  )
+  );
 }

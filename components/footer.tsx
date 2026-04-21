@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { Facebook, Instagram, Linkedin } from "lucide-react"
-import { motion } from "framer-motion"
+import Link from "next/link";
+import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function Footer() {
   return (
@@ -17,7 +17,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
             <Link href="/" className="text-xl font-bold text-foreground">
-              dev<span className="text-primary">studio</span>
+              yd<span className="text-primary">web</span>
             </Link>
             <p className="mt-2 text-sm text-muted-foreground">
               Sites internet pour artisans et petites entreprises.
@@ -27,9 +27,21 @@ export function Footer() {
           <div className="flex items-center gap-4">
             {/* TODO: Remplacez les liens par vos reseaux sociaux */}
             {[
-              { href: "https://facebook.com", icon: Facebook, label: "Facebook" },
-              { href: "https://instagram.com", icon: Instagram, label: "Instagram" },
-              { href: "https://linkedin.com", icon: Linkedin, label: "LinkedIn" },
+              {
+                href: "https://facebook.com",
+                icon: Facebook,
+                label: "Facebook",
+              },
+              {
+                href: "https://instagram.com",
+                icon: Instagram,
+                label: "Instagram",
+              },
+              {
+                href: "https://linkedin.com",
+                icon: Linkedin,
+                label: "LinkedIn",
+              },
             ].map((social) => (
               <motion.div
                 key={social.label}
@@ -51,9 +63,9 @@ export function Footer() {
         </div>
 
         <div className="mt-8 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} devstudio. Tous droits reserves.</p>
+          <p>&copy; {new Date().getFullYear()} ydweb. Tous droits réservés.</p>
         </div>
       </div>
     </motion.footer>
-  )
+  );
 }
