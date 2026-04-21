@@ -34,13 +34,13 @@ export function Header() {
               href="#work"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
-              Realisations
+              Résultats
             </Link>
             <Link
               href="#about"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
-              A propos
+              À propos
             </Link>
             <Link
               href="#contact"
@@ -93,14 +93,14 @@ export function Header() {
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Realisations
+                  Résultats
                 </Link>
                 <Link
                   href="#about"
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  A propos
+                  À propos
                 </Link>
                 <Link
                   href="#contact"

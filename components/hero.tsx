@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
-import { ArrowRight, CheckCircle } from "lucide-react"
-import { motion } from "framer-motion"
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { ArrowRight, CheckCircle } from "lucide-react";
+import { motion } from "framer-motion";
 
 const benefits = [
   "Site visible 24h/24, 7j/7",
   "Clients qui vous trouvent facilement",
   "Image professionnelle garantie",
-]
+];
 
 export function Hero() {
   return (
@@ -49,8 +49,9 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto text-pretty"
           >
-            Artisans, commercants, independants : je cree des sites web simples et efficaces 
-            qui vous amenent de nouveaux clients. Pas de jargon technique, juste des resultats concrets.
+            Artisans, commercants, indépendants : je crée des sites web modernes
+            et pensés pour transformer vos visiteurs en clients. Pas de jargon
+            technique, juste des résultats concrets.
           </motion.p>
 
           <motion.div
@@ -86,9 +87,7 @@ export function Hero() {
               </Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
-              <Link href="#work">
-                Voir des exemples
-              </Link>
+              <Link href="#work">Voir des exemples</Link>
             </Button>
           </motion.div>
 
@@ -98,10 +97,10 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 1 }}
             className="mt-6 text-sm text-muted-foreground"
           >
-            Reponse sous 24h - Sans engagement
+            Réponse sous 24h - Sans engagement
           </motion.p>
         </div>
       </div>
     </section>
-  )
+  );
 }

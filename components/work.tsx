@@ -1,39 +1,42 @@
-"use client"
+"use client";
 
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { motion } from "framer-motion"
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { motion } from "framer-motion";
+import { ExternalLink } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
-const projects = [
+const cases = [
   {
-    title: "Plomberie Martin",
-    type: "Artisan plombier",
-    description: "Site vitrine avec formulaire de demande de devis, galerie de realisations et zone d'intervention. Le client recoit maintenant 5 a 10 demandes par semaine.",
-    result: "+40% de nouveaux clients",
+    title: "Site pour artisan local",
+    type: "Plombier / artisan",
+    description:
+      "Un site simple pour présenter les services, montrer les réalisations et recevoir des demandes de devis facilement.",
+    result: "Plus de demandes de devis",
+    link: "#",
     color: "bg-primary/10",
   },
   {
-    title: "Salon Elegance",
-    type: "Coiffeur",
-    description: "Presentation des prestations, tarifs clairs et systeme de prise de rendez-vous en ligne. Les clients peuvent reserver 24h/24.",
-    result: "Agenda rempli a 80%",
+    title: "Site pour professionnel de service",
+    type: "Ambulancier / indépendant",
+    description:
+      "Présentation claire des services et mise en place d’un système pour être contacté facilement.",
+    result: "Plus de prises de contact",
+    link: "#",
     color: "bg-accent/10",
   },
   {
-    title: "Menuiserie Dubois",
-    type: "Artisan menuisier",
-    description: "Portfolio de creations sur-mesure avec photos avant/apres. Mise en valeur du savoir-faire et des materiaux utilises.",
-    result: "Projets plus importants",
+    title: "Site vitrine simple",
+    type: "Entreprise locale",
+    description:
+      "Un site propre et rapide pour être visible sur internet et rassurer les clients.",
+    result: "Meilleure visibilité locale",
+    link: "#",
     color: "bg-primary/10",
   },
-  {
-    title: "Auto-Ecole Conduite Plus",
-    type: "Auto-ecole",
-    description: "Presentation des formules, tarifs transparents et temoignages d'eleves. Inscription en ligne simplifiee.",
-    result: "+60% d'inscriptions",
-    color: "bg-accent/10",
-  },
-]
+];
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -43,85 +46,118 @@ const containerVariants = {
       staggerChildren: 0.15,
     },
   },
-}
+};
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6 },
+    transition: { duration: 0.5 },
   },
-}
+};
 
 export function Work() {
   return (
     <section id="work" className="py-20 sm:py-32">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="text-center mb-14"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground">Ils m&apos;ont fait confiance</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
+            Des sites simples qui apportent des clients
+          </h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-            Des professionnels comme vous qui ont booste leur activite grace a leur site internet.
+            Voici quelques exemples de sites que je peux créer pour vous.
           </p>
         </motion.div>
 
+        {/* CARDS */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 gap-6"
+          className="grid md:grid-cols-3 gap-6"
         >
-          {projects.map((project) => (
-            <motion.div key={project.title} variants={itemVariants}>
-              <Card className="overflow-hidden border-border/50 hover:border-primary/50 transition-all group h-full">
+          {cases.map((item) => (
+            <motion.div key={item.title} variants={itemVariants}>
+              <Card className="overflow-hidden border-border/50 hover:border-primary/50 transition-all h-full group">
+                {/* RESULT */}
                 <motion.div
                   whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                  className={`h-40 ${project.color} flex items-center justify-center`}
+                  className={`h-36 ${item.color} flex items-center justify-center`}
                 >
                   <div className="text-center px-4">
-                    <span className="text-2xl font-bold text-primary">{project.result}</span>
-                    <p className="text-sm text-muted-foreground mt-1">Resultat obtenu</p>
+                    <span className="text-lg font-semibold text-primary">
+                      {item.result}
+                    </span>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Résultat attendu
+                    </p>
                   </div>
                 </motion.div>
+
+                {/* CONTENT */}
                 <CardContent className="p-6">
-                  <div className="flex items-start justify-between mb-2">
-                    <div>
-                      <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
-                        {project.title}
-                      </h3>
-                      <Badge variant="secondary" className="mt-1">{project.type}</Badge>
-                    </div>
+                  <div className="flex flex-col gap-2">
+                    <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">
+                      {item.title}
+                    </h3>
+
+                    <Badge variant="secondary" className="w-fit">
+                      {item.type}
+                    </Badge>
                   </div>
-                  <p className="mt-3 text-muted-foreground">{project.description}</p>
+
+                  <p className="mt-3 text-muted-foreground text-sm leading-relaxed">
+                    {item.description}
+                  </p>
+
+                  {/* LINK */}
+                  <a
+                    href={item.link}
+                    className="mt-4 inline-flex items-center gap-2 text-sm text-primary hover:underline"
+                  >
+                    Voir un exemple
+                    <ExternalLink size={14} />
+                  </a>
                 </CardContent>
               </Card>
             </motion.div>
           ))}
         </motion.div>
 
+        {/* CTA */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-12 text-center p-8 bg-muted/50 rounded-2xl"
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-12 text-center p-8 bg-muted/40 rounded-2xl"
         >
-          <p className="text-lg text-foreground font-medium">
-            Vous aussi, faites passer votre activite au niveau superieur.
+          <p className="text-lg font-medium text-foreground">
+            Vous avez besoin d’un site simple et efficace ?
           </p>
           <p className="text-muted-foreground mt-2">
-            Chaque projet est unique, parlons du votre.
+            Je vous aide à créer un site qui vous apporte des clients.
           </p>
+          {/* CTA BUTTON */}
+          <div className="mt-6">
+            <Button size="lg" asChild className="group">
+              <Link href="#contact">
+                Demander un devis gratuit
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </Button>
+          </div>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
