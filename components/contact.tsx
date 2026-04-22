@@ -56,6 +56,7 @@ export function Contact() {
   >("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const startTime = Date.now();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -71,6 +72,7 @@ export function Contact() {
       phone: formData.get("phone") as string,
       service: formData.get("service") as string,
       message: formData.get("message") as string,
+      startTime,
     };
 
     try {
@@ -221,6 +223,13 @@ export function Contact() {
                           />
                         </Field>
                       </FieldGroup>
+                      <input
+                        name="website"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        style={{ display: "none" }}
+                        aria-hidden="true"
+                      />
                       <FieldGroup>
                         <Field>
                           <FieldLabel>Type de projet</FieldLabel>
