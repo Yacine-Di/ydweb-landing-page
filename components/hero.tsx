@@ -86,9 +86,6 @@ export function Hero() {
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" asChild>
-              <Link href="#work">Voir des exemples</Link>
-            </Button>
           </motion.div>
 
           <motion.p

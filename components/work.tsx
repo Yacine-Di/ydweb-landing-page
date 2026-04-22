@@ -119,14 +119,14 @@ export function Work() {
                     {item.description}
                   </p>
 
-                  {/* LINK */}
+                  {/* LINK 
                   <a
                     href={item.link}
                     className="mt-4 inline-flex items-center gap-2 text-sm text-primary hover:underline"
                   >
                     Voir un exemple
                     <ExternalLink size={14} />
-                  </a>
+                  </a>*/}
                 </CardContent>
               </Card>
             </motion.div>
