@@ -16,7 +16,6 @@ const YOUR_EMAIL = process.env.CONTACT_EMAIL || "contact@ydweb.fr";
 const BUSINESS_NAME = "ydweb";
 
 // ============================================
-
 const resend = new Resend(RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
@@ -62,7 +61,7 @@ export async function POST(request: NextRequest) {
           
           <div style="background: #fff; padding: 20px; border: 1px solid #eee; border-radius: 8px;">
             <h3 style="color: #333; margin-top: 0;">Message:</h3>
-            <p style="color: #555; line-height: 1.6;">${message.replace(/\n/g, "<br>")}</p>
+            <p style="color: #555; line-height: 1.6;">${(message || "").replace(/\n/g, "<br>")}</p>
           </div>
           
           <p style="color: #888; font-size: 12px; margin-top: 20px;">
@@ -81,7 +80,10 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json(
-      { success: true, message: "Message envoyé avec succès!" },
+      {
+        success: true,
+        message: "Message envoyé.\nNous vous répondrons sous 24h",
+      },
       { status: 200 },
     );
   } catch (error) {

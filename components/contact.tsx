@@ -18,14 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  Mail,
-  MapPin,
-  Clock,
-  Phone,
-  CheckCircle,
-  AlertCircle,
-} from "lucide-react";
+import { Mail, MapPin, Clock, CheckCircle, AlertCircle } from "lucide-react";
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Spinner } from "@/components/ui/spinner";
 import { motion } from "framer-motion";
@@ -62,9 +55,11 @@ export function Contact() {
     "idle" | "success" | "error"
   >("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
     setIsSubmitting(true);
     setSubmitStatus("idle");
     setErrorMessage("");
@@ -86,10 +81,11 @@ export function Contact() {
       });
 
       const result = await response.json();
-
+      console.log(e.currentTarget);
       if (response.ok) {
         setSubmitStatus("success");
-        e.currentTarget.reset();
+        setSuccessMessage(result.message);
+        form.reset();
       } else {
         setSubmitStatus("error");
         setErrorMessage(result.error || "Une erreur est survenue");
@@ -185,13 +181,9 @@ export function Contact() {
                     className="text-center py-8"
                   >
                     <CheckCircle className="h-16 w-16 text-primary mx-auto mb-4" />
-                    <h3 className="text-xl font-semibold text-foreground">
-                      Message envoyé !
+                    <h3 className="text-xl font-semibold text-foreground whitespace-pre-line">
+                      {successMessage}
                     </h3>
-                    <p className="text-muted-foreground mt-2">
-                      Merci pour votre demande. Je vous recontacte très
-                      rapidement.
-                    </p>
                   </motion.div>
                 ) : (
                   <form className="space-y-6" onSubmit={handleSubmit}>
