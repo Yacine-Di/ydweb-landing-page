@@ -1,6 +1,5 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
 import { CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -34,7 +33,7 @@ const itemVariants = {
 export function About() {
   return (
     <section id="about" className="py-20 sm:py-32 bg-muted/50">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden xl:overflow-visible">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Image placeholder */}
           <motion.div
@@ -54,9 +53,9 @@ export function About() {
                 <Image
                   src="/site-desktop.png"
                   alt="Aperçu du site sur ordinateur"
-                  className="w-[400px] h-auto object-cover"
+                  className="w-full max-w-[400px] h-[250px] object-cover"
                   width={400}
-                  height={300}
+                  height={250}
                 />
               </div>
 
@@ -79,7 +78,7 @@ export function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
+            <h2 className="text-3xl text-center sm:text-4xl font-bold text-foreground">
               Pourquoi travailler avec moi ?
             </h2>
             <div className="mt-6 space-y-4 text-muted-foreground">

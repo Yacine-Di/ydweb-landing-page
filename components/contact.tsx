@@ -83,7 +83,7 @@ export function Contact() {
       });
 
       const result = await response.json();
-      console.log(e.currentTarget);
+
       if (response.ok) {
         setSubmitStatus("success");
         setSuccessMessage(result.message);
@@ -104,7 +104,7 @@ export function Contact() {
 
   return (
     <section id="contact" className="py-20 sm:py-32">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden xl:overflow-visible">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

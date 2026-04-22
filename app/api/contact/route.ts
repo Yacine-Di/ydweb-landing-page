@@ -24,7 +24,6 @@ const resend = new Resend(RESEND_API_KEY);
 const ipCache = new Map<string, number>();
 
 // Security: Sanitize HTML input
-
 const window = new JSDOM("").window;
 const purify = DOMPurify(window as any);
 

@@ -72,9 +72,9 @@ export function Work() {
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
             Des sites simples qui apportent des clients
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+          {/* <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
             Voici quelques exemples de sites que je peux créer pour vous.
-          </p>
+          </p> */}
         </motion.div>
 
         {/* CARDS */}
