@@ -53,18 +53,18 @@ export function About() {
                 <Image
                   src="/site-desktop.png"
                   alt="Aperçu du site sur ordinateur"
-                  className="w-full max-w-[400px] h-[250px] object-cover"
+                  className="w-full max-w-[400px] h-[250px] object-fit"
                   width={400}
                   height={250}
                 />
               </div>
 
               {/* Mobile mockup */}
-              <div className="absolute -bottom-6 -right-6 overflow-hidden rounded-lg">
+              <div className="absolute -bottom-6 -right-1 sm:-right-6 overflow-hidden rounded-lg">
                 <Image
                   src="/site-mobile.png"
                   alt="Aperçu du site sur mobile"
-                  className="w-[120px] h-[240px] object-cover"
+                  className="w-[90px] sm:w-[120px] h-[190px] sm:h-[240px] object-fit"
                   width={120}
                   height={240}
                 />
