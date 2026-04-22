@@ -1,5 +1,5 @@
-import { Resend } from "resend"
-import { NextRequest, NextResponse } from "next/server"
+import { Resend } from "resend";
+import { NextRequest, NextResponse } from "next/server";
 
 // ============================================
 // CONFIGURATION - MODIFIEZ CES VALEURS
@@ -7,43 +7,43 @@ import { NextRequest, NextResponse } from "next/server"
 
 // TODO: Ajoutez votre clé API Resend ici ou dans les variables d'environnement
 // Créez un compte gratuit sur https://resend.com et récupérez votre clé API
-const RESEND_API_KEY = process.env.RESEND_API_KEY // ou remplacez par votre clé directement: "re_xxxxxxxxx"
+const RESEND_API_KEY = process.env.RESEND_API_KEY; // ou remplacez par votre clé directement: "re_xxxxxxxxx"
 
 // TODO: Remplacez par votre adresse email pour recevoir les messages
-const YOUR_EMAIL = process.env.CONTACT_EMAIL || "votre-email@exemple.com"
+const YOUR_EMAIL = process.env.CONTACT_EMAIL || "contact@ydweb.fr";
 
 // TODO: Remplacez par votre nom d'entreprise
-const BUSINESS_NAME = "DevStudio"
+const BUSINESS_NAME = "ydweb";
 
 // ============================================
 
-const resend = new Resend(RESEND_API_KEY)
+const resend = new Resend(RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json()
-    const { name, email, phone, service, message } = body
+    const body = await request.json();
+    const { name, email, phone, service, message } = body;
 
     // Validation des champs requis
     if (!name || !email || !message) {
       return NextResponse.json(
         { error: "Les champs nom, email et message sont obligatoires." },
-        { status: 400 }
-      )
+        { status: 400 },
+      );
     }
 
     // Validation basique de l'email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return NextResponse.json(
         { error: "Adresse email invalide." },
-        { status: 400 }
-      )
+        { status: 400 },
+      );
     }
 
     // Envoi de l'email avec Resend
     const { data, error } = await resend.emails.send({
-      from: `${BUSINESS_NAME} <onboarding@resend.dev>`, // Utilisez votre domaine vérifié en production
+      from: `${BUSINESS_NAME} <contact@ydweb.fr>`, // Utilisez votre domaine vérifié en production
       to: YOUR_EMAIL,
       replyTo: email,
       subject: `Nouvelle demande de ${name} - ${service || "Contact général"}`,
@@ -70,25 +70,25 @@ export async function POST(request: NextRequest) {
           </p>
         </div>
       `,
-    })
+    });
 
     if (error) {
-      console.error("Erreur Resend:", error)
+      console.error("Erreur Resend:", error);
       return NextResponse.json(
         { error: "Erreur lors de l'envoi de l'email. Veuillez réessayer." },
-        { status: 500 }
-      )
+        { status: 500 },
+      );
     }
 
     return NextResponse.json(
       { success: true, message: "Message envoyé avec succès!" },
-      { status: 200 }
-    )
+      { status: 200 },
+    );
   } catch (error) {
-    console.error("Erreur serveur:", error)
+    console.error("Erreur serveur:", error);
     return NextResponse.json(
       { error: "Une erreur est survenue. Veuillez réessayer plus tard." },
-      { status: 500 }
-    )
+      { status: 500 },
+    );
   }
 }
