@@ -54,13 +54,6 @@ export function Footer() {
             >
               contact@ydweb.fr
             </a>
-
-            <Link
-              href="#contact"
-              className="hover:text-primary transition-colors"
-            >
-              Demander un devis
-            </Link>
           </div>
         </div>
 

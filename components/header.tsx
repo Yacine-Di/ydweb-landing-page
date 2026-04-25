@@ -52,7 +52,7 @@ export function Header() {
 
           <div className="hidden md:block">
             <Button asChild>
-              <Link href="#contact">Devis gratuit</Link>
+              <a href="#contact">Devis gratuit</a>
             </Button>
           </div>
 

@@ -90,8 +90,8 @@ export function Services() {
             Ce que je vous propose
           </h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-            Un site internet cle en main, adapte a votre activite. Je
-            m&apos;occupe de tout, vous n&apos;avez rien a faire.
+            Un site internet clé en main, adapté à votre activité. Je
+            m&apos;occupe de tout, vous n&apos;avez rien à faire.
           </p>
         </motion.div>
 

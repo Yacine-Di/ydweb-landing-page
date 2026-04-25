@@ -81,10 +81,10 @@ export function Hero() {
             className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Button size="lg" asChild className="group">
-              <Link href="#contact">
+              <a href="#contact">
                 Demander un devis gratuit
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              </a>
             </Button>
           </motion.div>
 

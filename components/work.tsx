@@ -150,10 +150,10 @@ export function Work() {
           {/* CTA BUTTON */}
           <div className="mt-6">
             <Button size="lg" asChild className="group">
-              <Link href="#contact">
+              <a href="#contact">
                 Demander un devis gratuit
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              </a>
             </Button>
           </div>
         </motion.div>
